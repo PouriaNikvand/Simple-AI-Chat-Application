@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  nlp-statistics-api:
+    image: sample-api-chat-app:0.0.1
+    container_name: sample-controllers-chat-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      APP_RUN_PORT: 8585
+    ports:
+      - 8585:8585
