@@ -1,0 +1,7 @@
+mode: 'stage'
+logging:
+  handlers:
+    file_handler:
+      level: INFO
+    stream_handler:
+      level: INFO

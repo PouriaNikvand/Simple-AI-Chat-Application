@@ -1,0 +1,7 @@
+mode: 'local'
+logging:
+  handlers:
+    file_handler:
+      level: DEBUG
+    stream_handler:
+      level: DEBUG
