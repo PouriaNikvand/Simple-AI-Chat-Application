@@ -1,0 +1,2 @@
+class ChatBot:
+    pass
