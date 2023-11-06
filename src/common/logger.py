@@ -1,10 +1,11 @@
 import logging
 from datetime import datetime
 from logging import Logger
+
+import sentry_sdk
 from sentry_sdk.integrations.logging import LoggingIntegration
 
 from src.common.utils import Singleton
-
 
 name_to_level = logging.getLevelNamesMapping()
 

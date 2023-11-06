@@ -1,7 +1,6 @@
 mode: 'production'
 logging:
   sentry_dsn: 'production_dsn'
-logging:
   handlers:
     file_handler:
       level: WARNING

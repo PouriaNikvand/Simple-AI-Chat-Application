@@ -1,0 +1,30 @@
+from datetime import datetime
+from typing import List, Optional
+
+from src.entities.message import Message
+from src.entities.settings import Settings
+
+
+class Interaction:
+    """ "
+    an intersection is an object that contains the messages in event order
+    it also contains metadata of that intersection
+    """
+
+    def __init__(
+        self,
+        user_id: str,
+        interaction_id: str,
+        created_at: datetime,
+        updated_at: datetime,
+        settings: Settings,
+        message_list: Optional[List[Message]] = None,
+        **kwargs
+    ):
+        self.user_id = user_id
+        self.interaction_id = interaction_id
+        self.created_at = created_at
+        self.updated_at = updated_at
+        self.settings = settings
+        self.message_list = message_list if message_list else list()
+        self.metadata = kwargs
