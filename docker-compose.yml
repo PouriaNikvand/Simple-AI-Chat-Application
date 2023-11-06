@@ -30,6 +30,11 @@ services:
     networks:
       - mongo_net
 
+volumes:
+  # default dir on Ubuntu: /var/lib/docker/volumes
+  mongodb:
+  mongoconfig:
+
 networks:
   mongo_net:
     driver: bridge

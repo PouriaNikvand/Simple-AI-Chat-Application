@@ -25,7 +25,7 @@ ENV PYTHONPATH="/app/"
 EXPOSE 8585
 
 # Start processes
-CMD ["python", "app.py", "-c", "production.yml"]
+CMD ["python", "app.py", "-c", "config.yml"]
 
 # Running the container without any specific app
 #CMD ["tail", "-f","/dev/null"]

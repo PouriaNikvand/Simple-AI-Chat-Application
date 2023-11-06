@@ -1,7 +1,7 @@
 api_path_swagger: /swagger
 api_title: MYCHATBOT
 api_version: 0.0.0
-api_run_host: 'localhost'
+api_run_host: '127.0.0.1'
 api_run_port: 8585
 mode: ''
 timezone: 'utc'

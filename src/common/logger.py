@@ -4,7 +4,7 @@ from datetime import datetime
 from logging import Logger
 
 import sentry_sdk
-from sentry_sdk.integrations.logging import LoggingIntegration
+from sentry_sdk.integrations.fastapi import FastApiIntegration
 
 from src.common.utils import Singleton
 
@@ -16,10 +16,7 @@ class AppLogger(Logger, metaclass=Singleton):
         if not config:
             raise NotImplementedError
 
-        sentry_logging = LoggingIntegration(
-            level=logging.INFO, event_level=logging.WARNING
-        )
-        sentry_sdk.init(dsn=config["sentry_dsn"], integrations=[sentry_logging])  # type: ignore
+        sentry_sdk.init(dsn=config["sentry_dsn"], integrations=[FastApiIntegration("endpoint")])  # type: ignore
 
         Logger.__init__(self, name=config["name"])
 
