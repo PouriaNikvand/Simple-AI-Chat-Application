@@ -1,4 +1,5 @@
 import argparse
+import logging
 import os
 
 import uvicorn
@@ -30,6 +31,7 @@ app = FastAPI(
     title=config["api_title"],
     version=config["api_version"],
 )
+logger.log("The app has been created", level=logging.INFO)
 app.add_middleware(PrometheusMiddleware)
 app.include_router(service_handler.router)
 uvicorn.run(app, host=config["api_run_host"], port=config["api_run_port"])

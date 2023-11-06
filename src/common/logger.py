@@ -46,3 +46,8 @@ class AppLogger(Logger, metaclass=Singleton):
         console_handler.setFormatter(formatter)
         console_handler.setLevel(name_to_level[config["stream_handler"]["level"]])
         self.addHandler(console_handler)
+
+
+def log(text: str, level: int = logging.INFO):
+    logger = AppLogger()
+    logger.log(level=level, msg=text)
