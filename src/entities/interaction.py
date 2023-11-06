@@ -13,18 +13,23 @@ class Interaction:
 
     def __init__(
         self,
-        user_id: str,
         interaction_id: str,
         created_at: datetime,
         updated_at: datetime,
-        settings: Settings,
+        settings: dict,
         message_list: Optional[List[Message]] = None,
-        **kwargs
     ):
-        self.user_id = user_id
         self.interaction_id = interaction_id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.settings = settings
+        self.settings = Settings(**settings)
         self.message_list = message_list if message_list else list()
-        self.metadata = kwargs
+
+    def export_user_interactions(self):
+        dict(
+            id=self.interaction_id,
+            created_at=self.created_at,
+            updated_at=self.updated_at,
+            settings=self.settings.export_settings(),
+            messages=[i.export_message() for i in self.message_list],
+        )

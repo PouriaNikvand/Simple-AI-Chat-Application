@@ -32,7 +32,8 @@ class AppLogger(Logger, metaclass=Singleton):
         )
         file_handler.setLevel(name_to_level[config["file_handler"]["level"]])
         formatter = logging.Formatter(
-            config["file_handler"]["format"], datefmt=config["file_handler"]["date_format"]
+            config["file_handler"]["format"],
+            datefmt=config["file_handler"]["date_format"],
         )
         file_handler.setFormatter(formatter)
         self.addHandler(file_handler)

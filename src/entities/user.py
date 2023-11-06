@@ -7,11 +7,13 @@ class User:
     def __init__(
         self,
         user_id: str,
-        interaction_id_list: Optional[list[Interaction]] = None,
-        **kwargs
+        interaction_list: Optional[list[Interaction]] = None,
     ):
         self.user_id = user_id
-        self.interaction_id_list = (
-            interaction_id_list if interaction_id_list else list()
+        self.interaction_list = interaction_list if interaction_list else list()
+
+    def export_user_interactions(self):
+        dict(
+            id=self.user_id,
+            interactions=[i.export_user_interactions() for i in self.interaction_list],
         )
-        self.metadata = kwargs

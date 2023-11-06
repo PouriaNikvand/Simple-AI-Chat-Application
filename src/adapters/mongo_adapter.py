@@ -19,8 +19,8 @@ class BaseMongoClient:
         sort = [("timestamp", pymongo.DESCENDING)]
         self.coll.find_one(query, sort=sort)
 
-    def find(self, name, docs: list):
-        query = {name: {"$in": docs}}
+    def find(self, name, doc: str):
+        query = {name: doc}
         sort = [("_id", pymongo.DESCENDING)]
         self.coll.find(query, sort=sort)
 
@@ -30,10 +30,10 @@ class BaseMongoClient:
 
 
 class InteractionsMongoClient(BaseMongoClient):
-    def get_user_interactions(self, user_ids: list):
-        return self.find("user_id", user_ids)
+    def get_user_interactions(self, user_id: str):
+        return self.find("user_id", user_id)
 
 
 class MessagesMongoClient(BaseMongoClient):
-    def get_messages(self, interaction_ids: list):
-        return self.find("interaction_id", interaction_ids)
+    def get_messages(self, interaction_id):
+        return self.find("interaction_id", interaction_id)

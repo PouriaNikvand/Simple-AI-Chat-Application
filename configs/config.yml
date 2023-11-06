@@ -20,10 +20,16 @@ logging:
       format: '%(asctime)s - %(levelname)s: %(message)s'
       date_format: '%Y-%m-%d %H:%M:%S'
 mongo:
-  host: 'mongodb:27017'
-  db_name: 'test'
-  coll_name: 'test'
+  interactions:
+    host: 'mongodb:27017'
+    db_name: 'test'
+    coll_name: 'interactions'
+  messages:
+    host: 'mongodb:27017'
+    db_name: 'test'
+    coll_name: 'messages'
 redis:
-  host: ''
-  port: ''
-  db: ''
+  interactions:
+    host: ''
+    port: ''
+    db: ''
