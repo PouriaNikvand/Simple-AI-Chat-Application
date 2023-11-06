@@ -1,3 +1,8 @@
+api_path_swagger: /swagger
+api_title: MYCHATBOT
+api_version: 0.0.0
+api_run_host: 'localhost'
+api_run_port: 8585
 mode: ''
 timezone: 'utc'
 logging:
@@ -9,15 +14,15 @@ logging:
       run_mode: 'dev'
       format: '%(asctime)s - %(levelname)s: %(message)s'
       date_format: '%Y-%m-%d %H:%M:%S'
-      directory: /var/log/saca/
+      directory: './logs/saca/'
     stream_handler:
       level: DEBUG
       format: '%(asctime)s - %(levelname)s: %(message)s'
       date_format: '%Y-%m-%d %H:%M:%S'
 mongo:
-  host: ''
-  db_name: ''
-  coll_name: ''
+  host: 'mongodb:27017'
+  db_name: 'test'
+  coll_name: 'test'
 redis:
   host: ''
   port: ''

@@ -1,4 +1,5 @@
 import logging
+import os
 from datetime import datetime
 from logging import Logger
 
@@ -23,15 +24,15 @@ class AppLogger(Logger, metaclass=Singleton):
         Logger.__init__(self, name=config["name"])
 
         config = config["handlers"]
+        os.makedirs(config["file_handler"]["directory"], exist_ok=True)
         file_handler = logging.FileHandler(
-            filename=f'{config["file_handler"]["parent_directory"]}'
+            filename=f'{config["file_handler"]["directory"]}'
             f'{config["file_handler"]["run_mode"]}-'
-            f'{config["file_handler"]["invoked_from"]}-'
-            f'{datetime.now().strftime("%Y-%m-%d-%H")}.log'
+            f'{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}.log'
         )
         file_handler.setLevel(name_to_level[config["file_handler"]["level"]])
         formatter = logging.Formatter(
-            config["file_handler"]["format"], datefmt=config["file_handler"]["datefmt"]
+            config["file_handler"]["format"], datefmt=config["file_handler"]["date_format"]
         )
         file_handler.setFormatter(formatter)
         self.addHandler(file_handler)
