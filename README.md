@@ -1,84 +1,95 @@
 # Simple-AI-Chat-Application
-This is a Simple AI Chat Application for an interview
+This is a casual breakdown of how I tackled the programming assignment for the Simple AI Chat Application during an interview. 😊
 
-Here I explain how I work step by step.
+## Step 1: Let's Begin!
+I started by creating a GitHub repository for the project and diving headfirst into the project requirements. This initial step was like putting on my detective hat to understand what I needed to do and what pieces were needed for the chat application.
 
-## Reading the assignment and init the Project
+## Step 2: Designing the Chat Magic 🪄
+With a good grasp of what the project required, it was time to work my creative juices. I focused on designing the application and crafting an experience that meets the project's needs. Think of it like drawing a roadmap with key stops, and the stops in this journey were the vital API endpoints:
 
-here I created a GitHub repository and check the project requirements.
+### Creating new interactions 🙌
+### Fetching all interactions 🕵️
+### Creating messages in interactions 🗨️
+### Fetching all messages in interactions 📬
+I started by brainstorming and sketching these essential components on my trusty notebook. If time allowed, I'd even take those doodles and turn them into a fancy visual representation using tools like draw.io.
 
-## Design
+In this creative process, I thought about some of the main characters in our chat app adventure:
 
-As the project described what it needs and described the services, I decided to design a simple project.
-For this I read the requirements and start to get proper design based on endpoints and how chat apps works. 
-note that the project contains these Deliverable API Endpoints:
-- Create a new interaction.
-- Fetch all interactions.
-- Create a message on an interaction.
-- Fetch all messages in an interaction.
+## What we need to do this?
+### Users: 🧑
+With a user_id, we can find user objects that contain interaction lists and user info, like names.
 
-here I design on my notebook and if i had enough time I will move it to draw.io
+### Interactions: 💬
+Using interaction_id, we gather details about interactions, such as titles and creation timestamps.
 
+### Messages: 📝
+Messages come with message_id, message text, timestamps, and maybe some extra metadata, like transformed message content.
 
-### first, we think about what objects are we working with and how it seems to be a chat application:
-- Users : using user_id we can have the user objects that contains list of interactions and user infos like name etc.
-- Interactions : using interaction_id we can have the meta infos about interactions this could be information like e title and creation timestamp etc.   
-- messages : messages that contain message_id, massage string, infos like massage timestamp, also any metadata like any kind of array of transformed string of message etc.   
+## How is the code structure? 
+#### I kept things high-level during this phase due to time constraints, but here's what I planned to include:
 
+### Adapters: 🛠️
+Think of these as the bridges that connect us to databases holding user data or those magical AI-based models.
 
-### second, sample design of the project and what it needed
-In this project because of short time we do not discuss details.
-- adapters : proper interface for connecting to database of users or object stores that contains any ai based models
-- common : common tools and methods that casually we use
-- entities : entities interfaces for Users, interactions, Messages, Settings 
-- modules : for AI based modules that takes the main process in chat app  
-- configs : proper configs based on where the app is running on
-- services : for service interface that api uses
+### Common: 🛠️
+This is where I stored the tools and methods that made the development process smooth and easy.
 
-## Implementation
+### Entities: 🕴️
+These are like the blueprints for Users, Interactions, Messages, and Settings, helping us create objects and validate data.
 
-### database: 
-Choosing mongodb as a main storage and handling two collection for this use case
-first collection is used for interactions that the _id in collection is interaction_id, second collection is 
-for messages that the _id is the message_id 
-#### caching:
-we can cache users and interactions for short term using redis database 
-### entities:
-designing User, Interaction, Message, Settings interfaces for using as a proper object and data validator
-#### User:
+### Modules: 🤖
+Here's where the AI-based modules worked their magic to power our chat app.
+
+### Configs: 📂
+I set up configuration files customized for where the app was running.
+
+### Services: 🌐
+This is where I defined interfaces for the services that the API relied on.
+
+## Step 3: Making It Real 🌟
+The implementation phase is where we turned our ideas into reality. Here's a sneak peek into what I did:
+
+### Database: 📦
+I chose MongoDB as our main storage solution. It handled two collections for this adventure. The first one stored interactions, with interaction_id as the key. The second collection held messages, with message_id as the key.
+
+### Caching: 🕒
+I also used Redis to store user and interaction data temporarily. Think of it as a way to quickly grab things we need.
+
+I also introduced you to our main characters:
+
+### User: 🧑
 - user_id
 - interaction_list
-- (here also we can have the metadata and any details of the user)
-#### Interaction:
+- And there was room for extra details if needed!
+### Interaction: 💬
 - interaction_id
 - created_at
 - updated_at
 - settings
 - message_list
-#### Message:
+### Message: 📝
 - interaction_id
 - message_id
 - created_at
 - role
 - content
-#### Settings:
+### Settings: ⚙️
 - model_name
 - role
 - prompt
 
-## docker
-Dockerfile and docker-compose is prepared and also, sample mongodb added to docker-compose
+## Step 4: Go in production ⚙️
+Additionally, I set up a Dockerfile and docker-compose and added a sample MongoDB instance to make things even more exciting!
 
-## styling & typecheck
-In this project I use black and isort for proper reformation of code and style
-Also using lint, typecheck, pyright for checking standards
+## Step 5: Making It Pretty and Error-Free 🎨
+Keeping our code looking sharp and free of mistakes is crucial. So, I used tools like "black" to keep it neat and "isort" to keep the imports in order. I also had linters, type checkers, and tools like pyright to ensure everything met coding standards.
 
-## exposing metrics
-Simple metrics are exposing for prometheus and it's prepared on /metrics path
+## Step 6: Sharing Our Progress 📊
+We're all about transparency here, so I exposed some simple metrics for Prometheus. You can check them out at the "/metrics" endpoint.
 
-## adding Swagger for API
-It's just prepared as an empty page
+## Step 7: Swagger for Everyone! 📚
+I even added Swagger documentation for the API. It's like a guidebook that helps users and developers understand what our endpoints do and how to use them.
 
-Still under development ...
+And last but not least, remember, this project was a work in progress, and it took me approximately 8 hours to get this far. 😅🕒
 
-The approximate time for this project was about 8 hours
+Let me know if you have any questions or need more details! 🚀
